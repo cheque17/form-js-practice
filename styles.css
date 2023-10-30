@@ -44,3 +44,16 @@ form {
 	display: flex;
 	flex-direction: column;
 }
+
+form input{
+	margin-bottom: 10px;
+	padding: 3px 2px;
+}
+
+form input:invalid{
+	border: red 1px solid;
+}
+
+form input:valid{
+	border: green 2px solid;
+}
