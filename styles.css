@@ -37,3 +37,10 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
+form {
+	border: 1px solid black;
+	padding: 25px 15px;
+	display: flex;
+	flex-direction: column;
+}
