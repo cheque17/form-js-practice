@@ -41,12 +41,13 @@ body {
 form {
 	border: 1px solid black;
 	padding: 25px 15px;
+	width: 16vw;
 	display: flex;
 	flex-direction: column;
 }
 
 form input{
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 	padding: 3px 2px;
 }
 
