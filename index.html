@@ -7,22 +7,37 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <form action="#">
+    <form action="#" novalidate>
 
-      <label for="user-email">*E-mail:</label>
-      <input type="email" name="email" id="user-email" placeholder="user.name@servicename.com" required>
-
-      <label for="user-country">*Country:</label>
-      <input type="text" name="country" id="user-country" required>
-
-      <label for="user-zipcode">*Zip Code:</label>
-      <input type="text" name="zip-code" id="user-zipcode" required>
-
-      <label for="password">*Password</label>
-      <input type="password" name="password" id="password" required>
+      <label for="user-email">
+        <span>*E-mail:</span>
+        <input type="email" name="email" id="user-email" placeholder="user.name@servicename.com" required minlength="8">
+        <span class="error" aria-live="polite"></span>
+      </label>
       
-      <label for="password-confirmation">*Password Confirmation:</label>
-      <input type="password" name="password-confirmation" id="password-confirmation" required>
+      <label for="user-country">
+        <span>*Country:</span>
+        <input type="text" name="country" id="user-country" required minlength="4" pattern="[A-Z][a-z]*" placeholder="Ex. Cuba">
+        <span class="error" aria-live="polite"></span>
+      </label>
+
+      <label for="user-zipcode">
+        <span>*Zip Code:</span>
+        <input type="text" name="zip-code" id="user-zipcode" required>
+        <span class="error" aria-live="polite"></span>
+      </label>
+
+      <label for="password">
+        <span>*Password</span>
+        <input type="password" name="password" id="password" minlength="8" required>
+        <span class="error" aria-live="polite"></span>
+      </label>
+      
+      <label for="password-confirmation">
+        <span>*Password Confirmation:</span>
+        <input type="password" name="password-confirmation" id="password-confirmation" minlength="8" required>
+        <span class="error" aria-live="polite"></span>
+      </label>
 
       <button type="submit">Submit</button>
     </form>
