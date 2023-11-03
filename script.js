@@ -25,6 +25,8 @@ function showError(formElementInput, formElementError, requestedInfo) {
     formElementError.textContent = `Content should be at least ${formElementInput.minLength} characters; you entered ${formElementInput.value.length}.`;
   } else if(formElementInput.validity.patternMismatch) {
     formElementError.textContent = 'The content should start with uppercase like the example.';
+  } else if (password.value !== formElementInput.value) {
+    formElementError.textContent = 'Passwords should match each other, please make sure to type the password correctly.'
   }
 
   formElementError.className = "error active";
@@ -37,6 +39,18 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
   } else if (!country.validity.valid) {
     showError(country, countryError, 'a country name');
+    event.preventDefault();
+  } else if (!zipcode.validity.valid) {
+    showError(zipcode, zipcodeError, 'a zip code')
+    event.preventDefault();
+  } else if (!password.validity.valid) {
+    showError(password, passwordError, 'a password');
+    event.preventDefault();
+  } else if (!confirmationPw.validity.valid) {
+    showError(confirmationPw, confirmationPwError, 'a confirmation password');
+    event.preventDefault();
+  } else if (password.value !== confirmationPw.value) {
+    showError(confirmationPw, confirmationPwError, 'a confirmation password');
     event.preventDefault();
   }
 });
@@ -67,3 +81,25 @@ zipcode.addEventListener('input', ()=>{
     showError(zipcode, zipcodeError, 'a zip code');
   }
 })
+
+password.addEventListener('input', ()=>{
+  if (password.validity.valid) {
+    passwordError.textContent = "";
+    passwordError.className = 'error';
+  } else {
+    showError(password, passwordError, 'a password')
+  }
+})
+
+confirmationPw.addEventListener('input', ()=>{
+  console.log(confirmationPw.validity)
+  if (!confirmationPw.validity.valid) {
+    showError(confirmationPw, confirmationPwError, 'a confirmation password')
+  } else if (password.value!== confirmationPw.value){
+    showError(confirmationPw, confirmationPwError, 'a confirmation password');
+  } else if (confirmationPw.validity.valid) {
+    confirmationPwError.textContent = "";
+    confirmationPwError.className = "error";
+  }
+})
+
