@@ -7,8 +7,13 @@ const country = document.querySelector('#user-country');
 const countryError = document.querySelector('#user-country + span.error');
 
 const zipcode = document.querySelector('#user-zipcode');
+const zipcodeError = document.querySelector('#user-zipcode + span.error');
+
 const password = document.querySelector('#password');
+const passwordError = document.querySelector('#password + span.error');
+
 const confirmationPw = document.querySelector('#password-confirmation');
+const confirmationPwError = document.querySelector('#password-confirmation + span.error');
 
 
 function showError(formElementInput, formElementError, requestedInfo) {
@@ -28,10 +33,10 @@ function showError(formElementInput, formElementError, requestedInfo) {
 
 form.addEventListener("submit", (event) => {
   if (!email.validity.valid) {
-    showError(email, emailError, 'an email address' );
+    showError(email, emailError, 'an email address');
     event.preventDefault();
   } else if (!country.validity.valid) {
-    showError();
+    showError(country, countryError, 'a country name');
     event.preventDefault();
   }
 });
@@ -46,12 +51,19 @@ email.addEventListener("input", (event) => {
 });
 
 country.addEventListener('input', (event)=> {
-  console.log(country.validity.valid)
-  console.log(country.validity)
   if (country.validity.valid){
     countryError.textContent = "";
-    emailError.className = 'error';
+    countryError.className = 'error';
   } else {
     showError(country, countryError, 'a coutry name')
+  }
+})
+
+zipcode.addEventListener('input', ()=>{
+  if (zipcode.validity.valid){
+    zipcodeError.textContent = "";
+    zipcodeError.className = 'error';
+  } else {
+    showError(zipcode, zipcodeError, 'a zip code');
   }
 })
